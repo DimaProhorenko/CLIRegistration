@@ -8,8 +8,8 @@ import java.util.*;
 
 public class SignupView {
     private Scanner scanner = new Scanner(System.in);
-//    private List<Prompt> prompts = new ArrayList<>(List.of(new EmailPrompt()));
-    private Prompt[] prompts = {new UserNamePrompt(), new EmailPrompt()};
+    private Prompt[] prompts = {new UserNamePrompt(), new EmailPrompt(), new PasswordPromt()};
+
     public User getData() {
         List<String> data = new ArrayList<>(prompts.length);
 

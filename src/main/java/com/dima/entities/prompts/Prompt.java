@@ -14,7 +14,7 @@ public abstract class Prompt {
     }
 
     public void printError() {
-        System.out.println(error);
+        System.err.println(error);
     }
 
     public abstract boolean validate(String input);
