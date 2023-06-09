@@ -1,16 +1,25 @@
 package com.dima.entities.prompts;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public abstract class Prompt {
     private String msg;
     private String error;
-
-    public Prompt(String msg, String error) {
+    public Prompt(String msg) {
         this.msg = msg;
-        this.error = error;
     }
 
     public String getMsg() {
         return msg;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 
     public void printError() {
@@ -18,4 +27,5 @@ public abstract class Prompt {
     }
 
     public abstract boolean validate(String input);
+
 }
