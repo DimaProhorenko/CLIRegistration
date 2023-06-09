@@ -1,7 +1,10 @@
 package com.dima;
 
+import com.dima.controllers.MainMenuController;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Initial commit");
+        MainMenuController mainMenuController = new MainMenuController();
+        mainMenuController.handleData();
     }
 }
