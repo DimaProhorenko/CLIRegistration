@@ -32,4 +32,9 @@ public class DBConn {
         }
         return false;
     }
+
+
+    public static Connection getConn() {
+        return conn;
+    }
 }
