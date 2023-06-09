@@ -1,6 +1,6 @@
 package com.dima.entities.prompts;
 
-public class PasswordPromt extends Prompt{
+public class PasswordPrompt extends Prompt{
     private enum Errors {
         LESS_THAN_MIN("Password must be greater than %d chars".formatted(MIN_LENGTH)),
         GREATER_THAN_MAX("Password must be less than %d chars".formatted(MAX_LENGTH));
@@ -16,7 +16,7 @@ public class PasswordPromt extends Prompt{
             .formatted(MIN_LENGTH, MAX_LENGTH);
 
 
-    public PasswordPromt() {
+    public PasswordPrompt() {
         super(PASSWORD_MSG);
     }
     @Override

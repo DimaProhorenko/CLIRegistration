@@ -4,11 +4,20 @@ import com.dima.database.DBConn;
 import com.dima.entities.User;
 import com.dima.utils.DBConstants;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
+import java.security.SecureRandom;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class SignupModel {
 
@@ -59,4 +68,5 @@ public class SignupModel {
         }
         return exists;
     }
+
 }

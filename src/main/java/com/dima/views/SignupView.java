@@ -2,13 +2,14 @@ package com.dima.views;
 
 import com.dima.entities.User;
 import com.dima.entities.prompts.*;
+import com.dima.utils.AES;
 import com.dima.utils.Printer;
 
 import java.util.*;
 
 public class SignupView {
     private Scanner scanner = new Scanner(System.in);
-    private Prompt[] prompts = {new UserNamePrompt(), new EmailPrompt(), new PasswordPromt()};
+    private Prompt[] prompts = {new UserNamePrompt(), new EmailPrompt(), new PasswordPrompt()};
 
     public User getData() {
         List<String> data = new ArrayList<>(prompts.length);
@@ -27,6 +28,6 @@ public class SignupView {
                 }
             }
         }
-        return new User(data.get(0), data.get(1), data.get(2));
+        return new User(data.get(0), data.get(1), AES.encrypt(data.get(2)));
     }
 }
