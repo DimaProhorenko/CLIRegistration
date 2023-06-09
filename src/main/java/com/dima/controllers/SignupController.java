@@ -1,5 +1,6 @@
 package com.dima.controllers;
 
+import com.dima.entities.User;
 import com.dima.views.SignupView;
 
 public class SignupController {
@@ -10,6 +11,6 @@ public class SignupController {
     }
 
     public void handleData() {
-        view.getData();
+        User user = view.getData();
     }
 }

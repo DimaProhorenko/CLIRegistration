@@ -27,6 +27,6 @@ public class SignupView {
                 }
             }
         }
-        return null;
+        return new User(data.get(0), data.get(1), data.get(2));
     }
 }
