@@ -5,6 +5,7 @@ import com.dima.entities.User;
 import com.dima.utils.DBConstants;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -38,5 +39,24 @@ public class SignupModel {
         }
 
         return false;
+    }
+
+    public static boolean userExists(String username) {
+        boolean exists = false;
+        String sql = "SELECT %s FROM %s WHERE %s = ? COLLATE NOCASE"
+                .formatted(DBConstants.COLUMN_USERS_USERNAME,
+                        DBConstants.TABLE_USERS, DBConstants.COLUMN_USERS_USERNAME);
+
+        try (PreparedStatement pstmt = DBConn.getConn().prepareStatement(sql)) {
+            pstmt.setString(1 ,username);
+            ResultSet results = pstmt.executeQuery();
+            if (results.next()) {
+                exists = true;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return exists;
     }
 }
