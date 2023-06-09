@@ -11,10 +11,13 @@ public class MainMenuController {
     }
 
     public void handleData() {
-        int choice = -1;
+        int choice = view.getData();
 
-        while (choice != 0) {
-            choice = view.getData();
+        switch(choice) {
+            case 2 -> {
+                SignupController controller = new SignupController();
+                controller.handleData();
+            }
         }
 
     }
