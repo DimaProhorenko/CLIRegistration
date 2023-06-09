@@ -8,11 +8,24 @@ import java.util.*;
 
 public class SignupView {
     private Scanner scanner = new Scanner(System.in);
-    private List<Prompt> prompts = new ArrayList<>(List.of(new EmailPrompt()));
+//    private List<Prompt> prompts = new ArrayList<>(List.of(new EmailPrompt()));
+    private Prompt[] prompts = {new UserNamePrompt(), new EmailPrompt()};
     public User getData() {
+        List<String> data = new ArrayList<>(prompts.length);
+
         Printer.printHeader("Signup");
-        for (int i = 0; i < prompts.size(); i++) {
-            System.out.println(prompts.get(i).getMsg());
+        for (Prompt prompt : prompts) {
+            while (true) {
+                System.out.println(prompt.getMsg());
+                String result = scanner.nextLine();
+                boolean isAcceptable = prompt.validate(result);
+                if (isAcceptable) {
+                    data.add(result);
+                    break;
+                } else {
+                    prompt.printError();
+                }
+            }
         }
         return null;
     }
