@@ -2,15 +2,15 @@ package com.dima.entities.prompts;
 
 import com.dima.models.SignupModel;
 
-public class UserNameDBPrompt extends UserNamePrompt {
+public class EmailDBPrompt extends EmailPrompt {
 
     @Override
     public boolean validate(String input) {
         if (!super.validate(input)) {
             return false;
         }
-        if (SignupModel.isUsernameInDB(input)) {
-            setError(UserNamePrompt.Errors.USER_ALREADY_EXISTS.err);
+        if (SignupModel.isEmailInDB(input)) {
+            setError(Errors.EMAIL_EXISTS.err);
             return false;
         }
         return true;

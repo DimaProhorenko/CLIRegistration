@@ -9,7 +9,7 @@ import java.util.*;
 
 public class SignupView {
     private Scanner scanner = new Scanner(System.in);
-    private Prompt[] prompts = {new UserNameDBPrompt(), new EmailPrompt(), new PasswordPrompt()};
+    private Prompt[] prompts = {new UserNameDBPrompt(), new EmailDBPrompt(), new PasswordPrompt()};
 
     public User getData() {
         List<String> data = new ArrayList<>(prompts.length);

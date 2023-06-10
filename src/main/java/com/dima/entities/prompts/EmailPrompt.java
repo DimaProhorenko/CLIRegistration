@@ -3,8 +3,9 @@ package com.dima.entities.prompts;
 import com.dima.utils.Utils;
 
 public class EmailPrompt extends Prompt{
-    private enum Errors {
-        WRONG_INPUT("Wrong email format");
+    public enum Errors {
+        WRONG_INPUT("Wrong email format"),
+        EMAIL_EXISTS("Email already exists");
         String err;
 
         Errors(String err) {

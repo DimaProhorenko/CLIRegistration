@@ -51,14 +51,23 @@ public class SignupModel {
         return false;
     }
 
-    public static boolean userExists(String username) {
+    public static boolean isUsernameInDB(String username) {
+        return userExists(DBConstants.COLUMN_USERS_USERNAME, username);
+    }
+
+    public static boolean isEmailInDB(String email) {
+        return userExists(DBConstants.COLUMN_USERS_EMAIL, email);
+    }
+
+    public static boolean userExists(String queryName, String query) {
         boolean exists = false;
         String sql = "SELECT %s FROM %s WHERE %s = ? COLLATE NOCASE"
                 .formatted(DBConstants.COLUMN_USERS_USERNAME,
-                        DBConstants.TABLE_USERS, DBConstants.COLUMN_USERS_USERNAME);
+                        DBConstants.TABLE_USERS,
+                        queryName);
 
         try (PreparedStatement pstmt = DBConn.getConn().prepareStatement(sql)) {
-            pstmt.setString(1 ,username);
+            pstmt.setString(1 ,query);
             ResultSet results = pstmt.executeQuery();
             if (results.next()) {
                 exists = true;
