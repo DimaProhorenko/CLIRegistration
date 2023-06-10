@@ -32,7 +32,8 @@ public class Encryptor {
 
     public static boolean validatePassword(String pass, String hashed) {
         byte[] salt = retrieveSalt(hashed);
-        return false;
+        String hashedPass = generateHashString(pass, salt);
+        return hashed.equalsIgnoreCase(hashedPass);
     }
 
     private static byte[] generateSalt() {
