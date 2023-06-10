@@ -14,6 +14,10 @@ public class MainMenuController {
         int choice = view.getData();
 
         switch(choice) {
+            case 1 -> {
+                LoginController controller = new LoginController();
+                controller.handleData();
+            }
             case 2 -> {
                 SignupController controller = new SignupController();
                 controller.handleData();

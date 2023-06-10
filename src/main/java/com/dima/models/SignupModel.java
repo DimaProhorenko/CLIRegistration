@@ -3,6 +3,7 @@ package com.dima.models;
 import com.dima.database.DBConn;
 import com.dima.entities.User;
 import com.dima.utils.DBConstants;
+import com.dima.utils.Encryptor;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;

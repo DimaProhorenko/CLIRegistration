@@ -1,20 +1,18 @@
 package com.dima.views;
-
 import com.dima.entities.User;
-import com.dima.entities.prompts.*;
-import com.dima.utils.Encryptor;
+import com.dima.entities.prompts.PasswordPrompt;
+import com.dima.entities.prompts.Prompt;
+import com.dima.entities.prompts.UserNamePrompt;
 import com.dima.utils.Printer;
 
 import java.util.*;
-
-public class SignupView {
+public class LoginView {
     private Scanner scanner = new Scanner(System.in);
-    private Prompt[] prompts = {new UserNameDBPrompt(), new EmailPrompt(), new PasswordPrompt()};
+    private Prompt[] prompts = {new UserNamePrompt(), new PasswordPrompt()};
 
     public User getData() {
         List<String> data = new ArrayList<>(prompts.length);
-
-        Printer.printHeader("Signup");
+        Printer.printHeader("Login");
         for (Prompt prompt : prompts) {
             while (true) {
                 System.out.println(prompt.getMsg());
@@ -28,6 +26,15 @@ public class SignupView {
                 }
             }
         }
-        return new User(data.get(0), data.get(1), Encryptor.generateHashString(data.get(2)));
+
+        return new User(data.get(0), null, data.get(1));
+    }
+
+    public void showSuccessPage() {
+        Printer.printHeader("Successfully logged in");
+    }
+
+    public void showFailPage() {
+        Printer.printHeader("Username or password is wrong!");
     }
 }

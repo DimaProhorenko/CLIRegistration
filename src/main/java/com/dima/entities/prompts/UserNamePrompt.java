@@ -3,7 +3,7 @@ package com.dima.entities.prompts;
 import com.dima.models.SignupModel;
 
 public class UserNamePrompt extends Prompt{
-    private enum Errors {
+    protected enum Errors {
         LESS_THAN_MIN("Username must be greater than %d chars".formatted(MIN_LENGTH)),
         GREATER_THAN_MAX("Username must be less than %d chars".formatted(MAX_LENGTH)),
         USER_ALREADY_EXISTS("User with this username already exist");
@@ -20,6 +20,7 @@ public class UserNamePrompt extends Prompt{
         super(USERNAME_MSG);
     }
 
+
     @Override
     public boolean validate(String input) {
         if (input.length() < MIN_LENGTH) {
@@ -30,10 +31,7 @@ public class UserNamePrompt extends Prompt{
             setError(Errors.GREATER_THAN_MAX.err);
             return false;
         }
-        if (SignupModel.userExists(input)) {
-            setError(Errors.USER_ALREADY_EXISTS.err);
-            return false;
-        }
+
         return true;
     }
 }
