@@ -7,20 +7,23 @@ public class MainMenuController {
 
     public MainMenuController() {
         view = new MainMenuView();
-        view.printHeader();
     }
 
     public void handleData() {
-        int choice = view.getData();
+        boolean flag = true;
+        while (flag) {
+            int choice = view.getData();
 
-        switch(choice) {
-            case 1 -> {
-                LoginController controller = new LoginController();
-                controller.handleData();
-            }
-            case 2 -> {
-                SignupController controller = new SignupController();
-                controller.handleData();
+            switch(choice) {
+                case 1 -> {
+                    LoginController controller = new LoginController();
+                    controller.handleData();
+                }
+                case 2 -> {
+                    SignupController controller = new SignupController();
+                    controller.handleData();
+                }
+                default -> flag = false;
             }
         }
 

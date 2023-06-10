@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class MainMenuView {
     private Scanner scanner = new Scanner(System.in);
     public int getData() {
+        printHeader();
         System.out.println("1 - Login\n2 - Signup\n0 - Exit");
         try {
             int choice = scanner.nextInt();
